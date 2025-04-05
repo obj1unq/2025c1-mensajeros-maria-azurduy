@@ -20,7 +20,7 @@ object neo {
 }
 
 object lincolnHawk {
-	var peso = _peso
+	var peso = 50 //peso random. no se si puede ser pasado sin definirse? 
 	var vehiculo = camion //valor random
 	var pesoTotal = pesoPropio + peso.vehiculo()
 
@@ -33,7 +33,8 @@ object lincolnHawk {
 
 object camion {
 	var cantidadAcoplados = 0
-	var peso = 500 + cantidadAcoplados * 500
+	method pesoDeAcoplados() = cantidadAcoplados * 500
+	var peso = 500 + self.pesoDeAcoplados()
 	
 	method peso() = peso
 
