@@ -1,76 +1,82 @@
 
 object chuckNorris {
-
 	const peso = 900  
 
-	method puedeLlamar() = true 
+	method puedeLlamar() { 
+		return true 
+	} 
 
 	method peso() = peso
-	
-	}
+}
 
 object celular {
-	credito = 0 
+	var credito = 0 
+	method puedeLlamar() = credito > 0
+	method credito(_credito) {credito = +credito}
 }
 object neo {
-	const peso = 0
+	const peso = 0 				// xq en el anunciado dice que no pesa, uso cons
+	const dispositivo = celular // xq en el anunciado dice que usa el celular, uso cons
 	method peso() = peso
-	method puedeLlamar() = credito > 0
-
+	method puedeLlamar() = dispositivo.puedeLlamar()
 }
 
 object lincolnHawk {
-	var peso = 50 //peso random. no se si puede ser pasado sin definirse? 
-	var vehiculo = camion //valor random
-	var pesoTotal = peso + peso.vehiculo()
-
-	method peso(_peso){
-    peso = _peso
+	var pesoPropio = 50 
+	var vehiculo = camion
+	method pesoPropio(_pesoPropio){
+    		pesoPropio = _pesoPropio
 	}
-	method puedeLlamar() = false
-  
+	method peso() {
+		return pesoPropio + vehiculo.peso()
+	}
+	method puedeLlamar() {
+		return false
+	}
+
+	method vehiculo(_vehiculo) {
+		vehiculo =_vehiculo
+	}
 }
 
 object camion {
-	var cantidadAcoplados = 0
+	var cantidadAcoplados = 1
+
 	method pesoDeAcoplados() = cantidadAcoplados * 500
-	var peso = 500 + self.pesoDeAcoplados()
 	
-	method peso() = peso
+	method peso() {
+		return 500 + self.pesoDeAcoplados()
+	}
+
+	method cantidadAcoplados(_cantidadAcoplados) {
+		cantidadAcoplados =_cantidadAcoplados
+	}
 
 }
 
 object bici {
-	method peso() = 10
+	const peso = 10
+	method peso() = peso
 }
 
 object paquete {
+	var estaPagado = false 
 
-	var estaPagado = false //valor booleano random o calculo relacionado con el dinero de george?
 	method puedeSerEntregadoEnPor(destino,mensajero) = estaPagado && destino.puedeEntrar(mensajero)
-	
 
+	method estaPagado(_estaPagado) {
+		estaPagado = _estaPagado
+	}
 }
 
-
-
 object puenteBrooklyn {
+
   method puedeEntrar(mensajero) = mensajero.peso() <= 1000
+
 }
 
 object matrix {
+
   method puedeEntrar(mensajero) = mensajero.puedeLlamar()
-}
-
-object george {
-
-	var dinero = x//aca no se cómo poner que el valor sea lo que yo le ingrese para probar un caso. 
-				// dado que se que puede ser que tenga dinero, o no. pero no lo se de entrada. 
-
-	method dinero(_dinero) {
-		dinero = _dinero
-	}
-
-	
 
 }
